@@ -5,8 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahorcado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <main>
+        <img src="images/logo-alura.svg" alt="Logo Alura">
+        <div class="initial">
+            <button class="first-button" onclick="startGame()">Iniciar juego</button><br>
+            <button class="second-button" onclick="addWords()">Agregar nueva palabra</button>
+        </div>
+        <div class="game">
+            <img src="images/hanged01.png" class="hanged01" alt="" style="display: none;">
+            <img src="images/hanged02.png" class="hanged02" alt="" style="display: none;">
+            <img src="images/hanged03.png" class="hanged03" alt="" style="display: none;">
+            <img src="images/hanged04.png" class="hanged04" alt="" style="display: none;">
+            <img src="images/hanged05.png" class="hanged05" alt="" style="display: none;">
+            <canvas></canvas>
+            <p class="win-lose"></p>
+            <li class="letters"></li><br>
+            <p class="wrong-letters"></p>
+            <button class="first-button" onclick="startGame()">Nuevo juego</button>
+            <button class="second-button" onclick="cancel()">Desistir</button>
+        </div>
+        <div class="add-words">
+            <input type="text" name="word" id="word" placeholder="Ingrese una palabra" onkeypress="return checkInput(event)" maxlength="8"><br>
+            <p>🚨 Máx. 8 letras</p>
+            <button class="first-button" onclick="saveWord()">Guardar y empezar</button>
+            <button class="second-button" onclick="cancel()">Cancelar</button>
+        </div>
+    </main>
+
+    <footer>
+        <span><i class="fa fa-github" style="font-size:24px"></i> Ernesto Zhildeer Chura Flores <i class="fa fa-github" style="font-size:24px"></i></span>
+    </footer>
 </body>
+<script src="js/script.js"></script>
 </html>
