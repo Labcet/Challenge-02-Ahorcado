@@ -40,7 +40,7 @@ main img{
     text-align: center;
 }
 
-button{
+.button-general{
 
     padding: 10px;
     margin: 10px 0;
@@ -126,6 +126,34 @@ button:hover{
     color: greenyellow;
 }
 
+.game .keyboard{
+
+    /*position: relative;*/
+    padding: 0 0 30px 0;
+    display: none;
+}
+
+.game .keyboard button{
+
+    /*background: none;*/
+    /*background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #ff7c48, #fbff0f);*/
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, greenyellow, rgb(47, 255, 245));
+    width: 30px;
+    padding: 5px;
+    margin: 5px;
+    color: #FFFFFF;
+    border: solid 1px transparent;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #222 inset;
+}
+
+.game table{
+
+    text-align: center;
+    margin: 0 auto;
+}
+
 /*============ ADD WORDS LAYOUT ============*/
 
 .add-words{
@@ -198,6 +226,7 @@ footer{
     main{
 
         width: 90%;
+        height: 870px;
     }
 
     .game canvas{
@@ -211,6 +240,16 @@ footer{
         width: 20px;
         font-size: 20px;
         border-bottom: 3px solid #FFFFFF;
+    }
+
+    .game .keyboard{
+
+        display: block;
+    }
+
+    .game .button-general{
+
+        width: 150px;
     }
 
     .add-words input{

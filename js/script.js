@@ -1,10 +1,10 @@
-let words = ['HTML', 'ZAPATO', 'GUITARRA', 'DOCUMENTO'];
+let words = ['HTML', 'PYTHON', 'PROGRAMA', 'DOCUMENTO', 'INTERNET', 'VARIABLE', 'CPU', 'MEMORIA', 'CHROME'];
 var flag = false;                   // BANDERA PARA INICIAR EL JUEGO
 var mainWord;                       // PALABRA A ADIVINAR
 var controlWord;                    // PARA EVITAR REPETIR LETRAS CORRECTAS
 var wrongLetters;                   // PARA EVITAR REPETIR LETRAS INCORRECTAS
 var rightLettersCount;              // CONTADOR DE LETRAS CORRECTAS INGRESADAS
-var regex = /^[A-Z]$/;              // REGEX PARA ACEPTAR SOLO LETRAS
+var regex = /^[A-Z\u00d1]$/;        // REGEX PARA ACEPTAR SOLO LETRAS INCLUIDA LA Ñ
 var attempts;                       // CANTIDAD DE INTENTOS
 var checkEndGameFlag = false;       // BANDERA PARA VERIFICAR SI EL JUEGO TERMINO
 
@@ -54,9 +54,8 @@ function saveWord() {
 
     if(word != ''){
         words.push(word.toUpperCase());
+        startGame();
     }
-
-    startGame();
 }
 
 function checkInput(e) {
@@ -105,53 +104,58 @@ document.addEventListener('keydown', (event) => {
     if(flag){
 
         var keyValue = event.key;
-        var wrongLetterCount = 0;
+        gameLogic(keyValue);
+    }
 
-        if(regex.test(keyValue) && attempts > 0 && !checkEndGameFlag){
-            if(!controlWord.includes(keyValue)){
-                for(var i = 0; i < mainWord.length; i++){
+  }, false);
 
-                    if(keyValue == mainWord[i]){
+function gameLogic(keyValue) {
 
-                        rightLettersCount++;
-                        controlWord += keyValue;
-                        var elements = document.querySelectorAll(".class_"+mainWord[i]);
+    var wrongLetterCount = 0;
 
-                        for (var j = 0; j < elements.length; j++){
-                            
-                            elements[j].textContent = mainWord[i];
-                        }
+    if(regex.test(keyValue) && attempts > 0 && !checkEndGameFlag){
+        if(!controlWord.includes(keyValue)){
+            for(var i = 0; i < mainWord.length; i++){
 
-                        if(rightLettersCount == mainWord.length){
+                if(keyValue == mainWord[i]){
 
-                            checkEndGameFlag = true;
-                            document.querySelector(".win-lose").textContent = "🎊 GANADOR 🏆";
-                        }
-                    } else {
+                    rightLettersCount++;
+                    controlWord += keyValue;
+                    var elements = document.querySelectorAll(".class_"+mainWord[i]);
 
-                        wrongLetterCount++;
+                    for (var j = 0; j < elements.length; j++){
+                        
+                        elements[j].textContent = mainWord[i];
                     }
+
+                    if(rightLettersCount == mainWord.length){
+
+                        checkEndGameFlag = true;
+                        document.querySelector(".win-lose").textContent = "🎊 GANADOR 🏆";
+                    }
+                } else {
+
+                    wrongLetterCount++;
                 }
             }
+        }
 
-            if(wrongLetterCount == mainWord.length){
+        if(wrongLetterCount == mainWord.length){
 
-                if(!wrongLetters.includes(keyValue)){
-                    attempts--;
-                    wrongLetters += keyValue;
-                    document.querySelector(".wrong-letters").textContent = wrongLetters;
-                    drawHanged(attempts);
+            if(!wrongLetters.includes(keyValue)){
+                attempts--;
+                wrongLetters += keyValue;
+                document.querySelector(".wrong-letters").textContent = wrongLetters;
+                drawHanged(attempts);
 
-                    if(attempts == 0){
-                        checkEndGameFlag = true;
-                        document.querySelector(".win-lose").textContent = "😖 PERDEDOR 😓";
-                    }
+                if(attempts == 0){
+                    checkEndGameFlag = true;
+                    document.querySelector(".win-lose").textContent = "😖 PERDEDOR 😓";
                 }
             }
         }
     }
-
-  }, false);
+  }
 
   function drawHanged(attempt) {
 
@@ -187,11 +191,7 @@ document.addEventListener('keydown', (event) => {
     }
   }
 
-  function drawLine(x1,y1,x2,y2) {
+  function keyboard(letter) {
 
-    pincel.lineWidth = 4;
-    pincel.beginPath();
-    pincel.moveTo(x1,y1);
-    pincel.lineTo(x2,y2);
-    pincel.stroke();
+    gameLogic(letter);
   }

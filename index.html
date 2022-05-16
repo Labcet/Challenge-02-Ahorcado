@@ -15,8 +15,8 @@
     <main>
         <img src="images/logo-alura.svg" alt="Logo Alura">
         <div class="initial">
-            <button class="first-button" onclick="startGame()">Iniciar juego</button><br>
-            <button class="second-button" onclick="addWords()">Agregar nueva palabra</button>
+            <button class="button-general first-button" onclick="startGame()">Iniciar juego</button><br>
+            <button class="button-general second-button" onclick="addWords()">Agregar nueva palabra</button>
         </div>
         <div class="game">
             <img src="images/hanged01.png" class="hanged01" alt="" style="display: none;">
@@ -28,14 +28,55 @@
             <p class="win-lose"></p>
             <li class="letters"></li><br>
             <p class="wrong-letters"></p>
-            <button class="first-button" onclick="startGame()">Nuevo juego</button>
-            <button class="second-button" onclick="cancel()">Desistir</button>
+            <div class="keyboard">
+                <table>
+                    <tr>
+                        <button onclick="keyboard('A')">A</button>
+                        <button onclick="keyboard('B')">B</button>
+                        <button onclick="keyboard('C')">C</button>
+                        <button onclick="keyboard('D')">D</button>
+                        <button onclick="keyboard('E')">E</button>
+                    </tr><br>
+                    <tr>
+                        <button onclick="keyboard('F')">F</button>
+                        <button onclick="keyboard('G')">G</button>
+                        <button onclick="keyboard('H')">H</button>
+                        <button onclick="keyboard('I')">I</button>
+                        <button onclick="keyboard('J')">J</button>
+                    </tr><br>
+                    <tr>
+                        <button onclick="keyboard('K')">K</button>
+                        <button onclick="keyboard('L')">L</button>
+                        <button onclick="keyboard('M')">M</button>
+                        <button onclick="keyboard('N')">N</button>
+                        <button onclick="keyboard('Ñ')">Ñ</button>
+                        <button onclick="keyboard('O')">O</button>
+                    </tr><br>
+                    <tr>
+                        <button onclick="keyboard('P')">P</button>
+                        <button onclick="keyboard('Q')">Q</button>
+                        <button onclick="keyboard('R')">R</button>
+                        <button onclick="keyboard('S')">S</button>
+                        <button onclick="keyboard('T')">T</button>
+                    </tr><br>
+                    <tr>
+                        <button onclick="keyboard('U')">U</button>
+                        <button onclick="keyboard('V')">V</button>
+                        <button onclick="keyboard('W')">W</button>
+                        <button onclick="keyboard('X')">X</button>
+                        <button onclick="keyboard('Y')">Y</button>
+                        <button onclick="keyboard('Z')">Z</button>
+                    </tr>
+                </table>
+            </div>
+            <button class="button-general first-button" onclick="startGame()">Nuevo juego</button>
+            <button class="button-general second-button" onclick="cancel()">Desistir</button>
         </div>
         <div class="add-words">
             <input type="text" name="word" id="word" placeholder="Ingrese una palabra" onkeypress="return checkInput(event)" maxlength="8"><br>
             <p>🚨 Máx. 8 letras</p>
-            <button class="first-button" onclick="saveWord()">Guardar y empezar</button>
-            <button class="second-button" onclick="cancel()">Cancelar</button>
+            <button class="button-general first-button" onclick="saveWord()">Guardar y empezar</button>
+            <button class="button-general second-button" onclick="cancel()">Cancelar</button>
         </div>
     </main>
 
